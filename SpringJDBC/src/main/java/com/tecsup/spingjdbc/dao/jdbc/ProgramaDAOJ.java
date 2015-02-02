@@ -15,8 +15,10 @@ public class ProgramaDAOJ extends JdbcDaoSupport implements ProgramaDao {
 	}
 
 	public Programa get(long t) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from programa";
+		Programa programa = (Programa) this.getJdbcTemplate().query(sql,
+				new ProgramaRowMapper());
+		return programa;
 	}
 
 	public void save(Programa t) {
