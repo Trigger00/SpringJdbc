@@ -12,8 +12,8 @@ public class App {
 
 	public static void main(String[] args) {
 		ApplicationContext cntx = new ClassPathXmlApplicationContext("app.xml");
-		//App.doDelete(cntx, 1);
-		App.doSave(cntx);
+		App.doUpdate(cntx,4);
+		// App.doSave(cntx);
 		App.doList(cntx);
 	}
 
@@ -31,14 +31,25 @@ public class App {
 		dao.delete(id);
 
 	}
-	
-	public static void doSave (ApplicationContext cntx){
-		ProgramaDao dao = (ProgramaDao)cntx.getBean("programaDao");
+
+	public static void doSave(ApplicationContext cntx) {
+		ProgramaDao dao = (ProgramaDao) cntx.getBean("programaDao");
 		Programa pr = new Programa();
-		
+
 		pr.setCodigo("77");
 		pr.setDescripcion("caso77");
 		pr.setNombre("caso77");
 		dao.save(pr);
 	}
+
+	public static void doUpdate(ApplicationContext cntx, long id) {
+		ProgramaDao dao = (ProgramaDao) cntx.getBean("programaDao");
+		Programa programa = dao.get(id);
+
+		programa.setCodigo("8888");
+		programa.setDescripcion("888");
+		programa.setNombre("nuevo I");
+		dao.update(programa);
+	}
+
 }

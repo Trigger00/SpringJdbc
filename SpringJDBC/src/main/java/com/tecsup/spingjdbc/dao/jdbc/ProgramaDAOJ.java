@@ -16,9 +16,8 @@ public class ProgramaDAOJ extends JdbcDaoSupport implements ProgramaDao {
 	}
 
 	public Programa get(long t) {
-		String sql = "select * from programa";
-		Programa programa = (Programa) this.getJdbcTemplate().query(sql,
-				new ProgramaRowMapper());
+		String sql = "select * from programa where id=?";
+		Programa programa = (Programa) this.getJdbcTemplate().queryForObject(sql,new Object[]{t},new ProgramaRowMapper());
 		return programa;
 	}
 
