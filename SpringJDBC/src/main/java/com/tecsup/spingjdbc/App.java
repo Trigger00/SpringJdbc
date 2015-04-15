@@ -12,8 +12,9 @@ public class App {
 
 	public static void main(String[] args) {
 		ApplicationContext cntx = new ClassPathXmlApplicationContext("app.xml");
-		App.doUpdate(cntx,4);
+		//App.doUpdate(cntx,3);
 		// App.doSave(cntx);
+		//App.doList(cntx);
 		App.doList(cntx);
 	}
 
@@ -21,7 +22,7 @@ public class App {
 		ProgramaDao dao = (ProgramaDao) cntx.getBean("programaDao");
 		List<Programa> programas = dao.list();
 		for (Programa programa : programas) {
-			System.out.println(programa.getNombre() + programa.getId());
+			System.out.println(programa.getNombre());
 		}
 
 	}
